@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-
+<h2>
+    메인페이지
+</h2>
 </body>
 </html>
