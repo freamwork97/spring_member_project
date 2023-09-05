@@ -14,5 +14,6 @@
 <h2>
     메인페이지
 </h2>
+<a href="/member?id=${member.id}">상세페이지</a> <br/>
 </body>
 </html>

@@ -5,6 +5,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class MemberReposit {
     @Autowired
@@ -18,9 +20,15 @@ public class MemberReposit {
         return sql.selectOne("Member.login", memberDTO);
     }
 
+    public List<MemberDTO> list() {
+        return sql.selectList("Member.list");
+    }
 
-//    public int login(MemberDTO memberDTO) {
-//        return sql.selectOne("Member.login",memberDTO);
-//
-//    }
+    public MemberDTO detail(int id) {
+        return sql.selectOne("Member.detail",id);
+    }
+
+    public void update(MemberDTO memberDTO) {
+        sql.update("Member.update", memberDTO);
+    }
 }

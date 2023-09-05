@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <h2>회원 등록</h2>

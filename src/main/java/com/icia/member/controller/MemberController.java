@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class MemberController {
     @Autowired
@@ -39,22 +41,44 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model) {
-        MemberDTO result = memberService.login(memberDTO);
 //        System.out.println(result);
-        if (result != null) {
-            model.addAttribute("member",result);
+        if (memberService.login(memberDTO) != null) {
+            model.addAttribute("member",memberService.login(memberDTO));
             return "memberMain";
         } else {
             return "memberLogin";
         }
-//        boolean result = memberService.login(memberDTO);
-//        if (result) {
-//            System.out.println("로그인 성공");
-//            return "memberMain";
-//        } else {
-//            System.out.println("로그인 실패");
-//            return "memberLogin";
-//        }
+
     }
 
+    @GetMapping("/members")
+    public String list(Model model) { // 가져갈게 있을 때 Model사용
+        List<MemberDTO> memberDTOList = memberService.list();
+        System.out.println("memberList = " + memberDTOList);
+        model.addAttribute("memberList", memberDTOList); // 화면에 가져갈 데이터
+        return "memberList"; // 브라우저에 출력할 jsp 파일 이름
+    }
+
+    @GetMapping("/member")
+    public String detail(@RequestParam("id") int id, Model model) {
+        MemberDTO memberDTO = memberService.detail(id);
+        System.out.println(id);
+        model.addAttribute("member", memberDTO);
+        return "memberDetail";
+    }
+
+    @GetMapping("/update")
+    public String update(@RequestParam("id") int id, Model model) {
+        MemberDTO memberDTO = memberService.detail(id);
+        model.addAttribute("member", memberDTO);
+//        System.out.println("id = " + id);
+        return "memberUpdate";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+        memberService.update(memberDTO);
+//        System.out.println("studentDTO = " + studentDTO);
+        return "memberMain";
+    }
 }
