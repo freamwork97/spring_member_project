@@ -20,6 +20,7 @@ public class MemberReposit {
         return sql.selectOne("Member.login", memberDTO);
     }
 
+
     public List<MemberDTO> list() {
         return sql.selectList("Member.list");
     }

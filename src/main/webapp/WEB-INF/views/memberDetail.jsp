@@ -1,33 +1,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <style>
+        table {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-<h2>상세정보</h2>
-<td>회원정보:${member}</td> <br>
-<td>이메일:${member.memberEmail}</td> <br>
-<td>비밀번호:${member.memberPassword}</td> <br>
-<td>이름:${member.memberName}</td> <br>
-<td>생년월일:${member.memberBirth}</td> <br>
-<td>전화번호:${member.memberMobile}</td> <br>
-<td>
-    <button onclick="update_fn('${member.id}')">수정</button>
-</td>
-<td>
-    <button onclick="delete_fn('${member.id}')">삭제</button>
-</td>
+<%@include file="component/header.jsp" %>
+<%@include file="component/nav.jsp" %>
+<div class="container">
+    <div id="member-detail">
+        <table class="table table-bordered">
+            <tr>
+                <td>id</td>
+                <td>email</td>
+                <td>name</td>
+                <td>birth</td>
+                <td>mobile</td>
+            </tr>
+            <tr>
+                <td>${member.id}</td>
+                <td>${member.memberEmail}</td>
+                <td>${member.memberName}</td>
+                <td>${member.memberBirth}</td>
+                <td>${member.memberMobile}</td>
+            </tr>
+        </table>
+        <a href="/members">목록으로 돌아가기</a>
+    </div>
+</div>
+
+<%@include file="component/footer.jsp" %>
 </body>
-
-<script>
-
-    const update_fn = (id) => {
-        location.href = "/update?id=" + id;
-    };
-
-    const delete_fn = (id) => {
-        location.href = "/delete?id=" + id;
-    };
-</script>
 </html>

@@ -43,11 +43,12 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
 //        System.out.println(result);
-        if (memberService.login(memberDTO) != null) {
-//          로그인 성공시 사용자 이메일을 세션에 저장
-            session.setAttribute("loginEmail",memberDTO.getMemberEmail());
+        MemberDTO result=  memberService.login(memberDTO);
+        if ( result!= null) {
             // 모델에 이메일 저장
-            model.addAttribute("email",memberDTO.getMemberEmail());
+            model.addAttribute("member",result);
+            //          로그인 성공시 사용자 이메일을 세션에 저장
+            session.setAttribute("loginEmail",memberDTO.getMemberEmail());
             return "memberMain";
         } else {
             return "memberLogin";
@@ -98,6 +99,7 @@ public class MemberController {
     public String update(@RequestParam("id") int id, Model model) {
         MemberDTO memberDTO = memberService.detail(id);
         model.addAttribute("member", memberDTO);
+
 //        System.out.println("id = " + id);
         return "memberUpdate";
     }
@@ -112,6 +114,6 @@ public class MemberController {
     @GetMapping("/delete")
     public String delete(@RequestParam("id") int id) {
         memberService.delete(id);
-        return "index";
+        return "redirect:/members";
     }
 }
