@@ -3,7 +3,7 @@ package com.icia.member.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -17,7 +17,8 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPassword;
     private String memberName;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date memberBirth;
+    //    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    private Date memberBirth;
+    private String memberBirth;
     private String memberMobile;
 }

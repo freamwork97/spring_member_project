@@ -31,4 +31,8 @@ public class MemberReposit {
     public void update(MemberDTO memberDTO) {
         sql.update("Member.update", memberDTO);
     }
+
+    public void delete(int id) {
+        sql.delete("Member.delete", id);
+    }
 }

@@ -1,21 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2023-09-05
-  Time: 오전 10:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/main.css">
+
 </head>
 <body>
-<h2>로그인</h2>
-<form action="/login" method="post" class="card mx-5 p-3">
-    이메일: <input type="text" name="memberEmail" /> <br />
-    비밀번호: <input type="text" name="memberPassword" /> <br />
-    <input type="submit" value="전송" class="btn btn-primary" />
+<%@include file="component/header.jsp"%>
+<%@include file="component/nav.jsp"%>
+<form action="/login" method="post">
+    <input type="text" name="memberEmail" placeholder="이메일 입력하세요"> <br>
+    <input type="text" name="memberPassword" placeholder="비밀번호 입력하세요"> <br>
+    <input type="submit" value="로그인">
 </form>
+<%@include file="component/footer.jsp"%>
+
 </body>
 </html>

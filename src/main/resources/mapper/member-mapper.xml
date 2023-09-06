@@ -24,6 +24,9 @@
         where id=#{id}
     </update>
 
+    <delete id="delete" parameterType="int">
+        delete from member_table where id=#{id}
+    </delete>
 </mapper>
 
 

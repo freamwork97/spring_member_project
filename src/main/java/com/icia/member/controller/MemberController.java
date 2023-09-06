@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -40,16 +41,42 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, Model model) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
 //        System.out.println(result);
         if (memberService.login(memberDTO) != null) {
-            model.addAttribute("member",memberService.login(memberDTO));
+//          로그인 성공시 사용자 이메일을 세션에 저장
+            session.setAttribute("loginEmail",memberDTO.getMemberEmail());
+            // 모델에 이메일 저장
+            model.addAttribute("email",memberDTO.getMemberEmail());
             return "memberMain";
         } else {
             return "memberLogin";
         }
 
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        // 아래 방법중 하나만 사용
+        // 해당 파라미터만 없앨 경우
+        session.removeAttribute("loginEmail");
+        // 세션 전체를 없앨 경우
+//        session.invalidate();
+        return "redirect:/";
+    }
+
+//    @PostMapping("/login")
+//    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+//        boolean login =memberService.login(memberDTO);
+//        if (login) {
+    //        로그인 성공시 사용자 이메일을 세션에 저장
+    //        session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+//            return "memberMain";
+//        } else {
+//            return "memberLogin";
+//        }
+//
+//    }
 
     @GetMapping("/members")
     public String list(Model model) { // 가져갈게 있을 때 Model사용
@@ -80,5 +107,11 @@ public class MemberController {
         memberService.update(memberDTO);
 //        System.out.println("studentDTO = " + studentDTO);
         return "memberMain";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id) {
+        memberService.delete(id);
+        return "index";
     }
 }
