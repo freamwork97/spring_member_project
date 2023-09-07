@@ -25,6 +25,7 @@ public class MemberController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
+        String cemail = memberService.cemail(memberDTO.getMemberEmail());
         boolean result = memberService.save(memberDTO);
         if (result) {
             System.out.println("학생등록 성공");
@@ -94,6 +95,7 @@ public class MemberController {
         model.addAttribute("member", memberDTO);
         return "memberDetail";
     }
+
 
     @GetMapping("/update")
     public String update(HttpSession session, Model model) {

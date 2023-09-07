@@ -15,7 +15,8 @@
 <%@include file="component/nav.jsp"%>
 <div id="section">
     <form action="/save" method="post">
-        <input class="form-control" type="text" name="memberEmail" placeholder="이메일"> <br>
+        <input id="key" class="form-control" type="text" name="memberEmail" placeholder="이메일" onkeyup="fun5()"> <br>
+        <p id="check-result"></p>
         <input type="text" name="memberPassword" placeholder="비밀번호"> <br>
         <input type="text" name="memberName" placeholder="이름"> <br>
         <input type="text" name="memberBirth" placeholder="생년월일(YYYYMMDD)"> <br>
@@ -26,4 +27,16 @@
 <%@include file="component/footer.jsp"%>
 
 </body>
+
+<script>
+    const fun5=()=>{
+        const tt = document.getElementById("key").value;
+        const checkresult = document.getElementById("check-result");
+        if(tt){
+            checkresult.innerHTML=tt;
+        }else{
+            checkresult.innerHTML="sss";
+        }
+    }
+</script>
 </html>

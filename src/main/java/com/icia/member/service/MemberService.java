@@ -66,4 +66,8 @@ public class MemberService {
     public MemberDTO findbyMemberEmail(String memberEmail) {
         return memberReposit.findbyMemberEmail(memberEmail);
     }
+
+    public String cemail(String memberEmail) {
+        return memberReposit.cemail(memberEmail);
+    }
 }

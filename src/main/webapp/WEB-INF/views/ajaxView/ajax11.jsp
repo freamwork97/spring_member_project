@@ -51,7 +51,7 @@
       },
       error: function (err) {
         console.log("실패");
-        alert(err.responseText);
+        alert("이메일 중복");
       }
     });
   }

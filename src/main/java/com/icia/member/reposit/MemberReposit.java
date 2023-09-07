@@ -40,4 +40,8 @@ public class MemberReposit {
     public MemberDTO findbyMemberEmail(String memberEmail) {
         return sql.selectOne("Member.findbyEmail",memberEmail);
     }
+
+    public String cemail(String memberEmail) {
+        return sql.selectOne("Member.cemail",memberEmail);
+    }
 }

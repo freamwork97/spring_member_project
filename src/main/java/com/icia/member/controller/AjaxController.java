@@ -74,13 +74,13 @@ public class AjaxController {
         return memberDTOList;
     }
 
-    @PostMapping(value = "/ajax11", produces = "applicatiom/text; charset=utf-8")
+    @PostMapping(value = "/ajax11")
     public ResponseEntity ajax11(@ModelAttribute MemberDTO memberDTO){
         try {
             memberService.save(memberDTO);
         }catch (Exception e){
             // 이메일 중복되는 상황에서 Conflict 라는 응답 코드를 줌
-            return new ResponseEntity<>("에메일이 중복",HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         List<MemberDTO> memberDTOList = memberService.list();
         // 문제가 없다면 회원 리스트 데이터와 200 코드를 응답으로 줌
