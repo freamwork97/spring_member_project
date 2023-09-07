@@ -56,10 +56,6 @@
    - memberName: varchar(20), not null
    - memberBirth: date, not null
    - memberMobile: varchar(30), not null
-6. 추가사항 (시간 남으면)
-   - 회원가입시 입력하지 않은 항목이 있다면 회원가입 진행하지 않고 alert 출력
-   - 회원가입시 비밀번호 정규식 체크
-   - 영문소문자, 숫자, 특수문자(!#$%) 하나 이상 입력하고 8~16자로
 
 ## database 
 ```sql
@@ -72,3 +68,8 @@ create table member_table(
     memberMobile varchar(30) not null
 );
 ```
+
+# 만들어보자
+- 회원가입시 입력하지 않은 항목이 있다면 회원가입 진행하지 않고 alert 출력
+- 회원가입시 비밀번호 정규식 체크
+- 영문소문자, 숫자, 특수문자(!#$%) 하나 이상 입력하고 8~16자로
