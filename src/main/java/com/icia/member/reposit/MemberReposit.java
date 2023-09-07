@@ -36,4 +36,8 @@ public class MemberReposit {
     public void delete(int id) {
         sql.delete("Member.delete", id);
     }
+
+    public MemberDTO findbyMemberEmail(String memberEmail) {
+        return sql.selectOne("Member.findbyEmail",memberEmail);
+    }
 }

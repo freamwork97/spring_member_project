@@ -20,13 +20,17 @@
     </select>
 
     <update id="update" parameterType="member">
-        update member_table set memberPassword=#{memberPassword}, memberMobile=#{memberMobile}
+        update member_table set memberName=#{memberName}, memberMobile=#{memberMobile}
         where id=#{id}
     </update>
 
     <delete id="delete" parameterType="int">
         delete from member_table where id=#{id}
     </delete>
+
+    <select id="findbyEmail" parameterType="String" resultType="member">
+        select * from member_table where memberEmail=#{memberEmail}
+    </select>
 </mapper>
 
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/ex">
+    <input type="text" id="exid" name="exname" class="exclass"><br>
+    <p id="check-result"></p>
+    <input type="text" id="tt" name="tt" class="tt" onkeyup="fun5()"><br>
+    <p id="check-result2" style="display: none">내가보인다</p>
+    <input type="submit" value="submit" onclick="fun1()"><br>
+    <input type="button" value="button" onclick="fun2()"><br>
+    <input type="button" value="체크결과" onclick="fun4()"><br>
+    <input type="button" value="체크결과2" onclick="fun5()"><br>
+    <button onclick="fun3()">버튼</button>
+</form>
+</body>
+<script>
+    const fun1 = () => {
+        console.log("fun1");
+    }
+    const fun2 = () => {
+        console.log("fun2");
+        const ex1 = document.getElementById("exid");
+        console.log(ex1);
+        console.log(ex1.value);
+        const ex1value = document.getElementById("exid").value;
+        console.log(ex1value);
+
+        const tt = document.getElementById("tt");
+        tt.value - ex1value;
+
+        const ex2 = document.getElementsByClassName("exclass");
+        console.log(ex2);
+        console.log(ex2[0].value);
+
+        const ex3 = document.getElementsByName("exname");
+        console.log(ex3[0].value);
+
+        // querySelector() : css 선택자 문법 활용하여 요소 가져옴
+        const ex4 = document.querySelector("#exid");
+        console.log(ex4);
+        console.log(ex4.value);
+
+        const ex5 = document.querySelector(".exclass");
+        console.log(ex5);
+        console.log(ex5.value);
+        const ex6 = document.querySelectorAll(".exclass");
+        console.log(ex6);
+        console.log(ex6.value);
+
+        // const ex7 = document.querySelector("[name=exname]");
+        // console.log(ex7);
+        // console.log(ex7.value())
+    }
+    const fun3 = () => {
+        console.log("fun3");
+    }
+    const fun4 = () => {
+        const ex = document.getElementById("exid").value;
+        const checkResult = document.getElementById("check-result");
+        //ex 값이 5보다 큰지 작은지에 따라 check-resut 구분해서 출력
+        if (ex.length > 5) {
+            console.log("5보다 크다");
+            checkResult.style.color = "green";
+            checkResult.innerHTML = "5보다 크다";
+        } else {
+            console.log("5보다 작다");
+            checkResult.style.color = "red";
+            checkResult.innerHTML = "5보다 작다";
+
+        }
+        console.log("fun4");
+    }
+    const fun5=()=>{
+        const tt = document.getElementById("tt").value;
+        const checkresult2 = document.getElementById("check-result2");
+        if(tt.length>5){
+            checkresult2.style.display="block";
+        }else{
+            checkresult2.style.display="none";
+        }
+    }
+</script>
+</html>

@@ -62,4 +62,8 @@ public class MemberService {
     public void delete(int id) {
         memberReposit.delete(id);
     }
+
+    public MemberDTO findbyMemberEmail(String memberEmail) {
+        return memberReposit.findbyMemberEmail(memberEmail);
+    }
 }
