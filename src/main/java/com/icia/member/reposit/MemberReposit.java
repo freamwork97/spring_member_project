@@ -41,7 +41,5 @@ public class MemberReposit {
         return sql.selectOne("Member.findbyEmail",memberEmail);
     }
 
-    public String cemail(String memberEmail) {
-        return sql.selectOne("Member.cemail",memberEmail);
-    }
+
 }

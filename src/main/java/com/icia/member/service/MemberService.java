@@ -67,7 +67,4 @@ public class MemberService {
         return memberReposit.findbyMemberEmail(memberEmail);
     }
 
-    public String cemail(String memberEmail) {
-        return memberReposit.cemail(memberEmail);
-    }
 }
