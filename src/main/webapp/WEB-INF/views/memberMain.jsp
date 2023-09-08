@@ -6,7 +6,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <%@include file="component/header.jsp" %>
@@ -17,17 +16,17 @@ model에 담은정보: ${member} <br>
 <button class="btn btn-primary" onclick="update_fn()">회원정보수정</button>
 
 <%--로그인 계정이 admin일 경우에만 회원목록 링크 보임--%>
-<c:if test="${sessionScope.loginEmail=='admin'}">
-    <a href="/members">회원목록</a>
-</c:if>
-<a href="/logout">로그아웃</a>
-<a href="/">index로 이동</a>
+<%--<c:if test="${sessionScope.loginEmail=='admin'}">--%>
+<%--    <a href="/members">회원목록</a>--%>
+<%--</c:if>--%>
+<%--<a href="/logout" class="btn btn-primary">로그아웃</a>--%>
+<%--<a href="/"  class="btn btn-primary">index로 이동</a>--%>
 <%@include file="component/footer.jsp" %>
 
 </body>
 <script>
-   const update_fn = () => {
-       location.href = "/update";
-   }
+    const update_fn = () => {
+        location.href = "/update";
+    }
 </script>
 </html>

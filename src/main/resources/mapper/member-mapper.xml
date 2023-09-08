@@ -32,9 +32,6 @@
         select * from member_table where memberEmail=#{memberEmail}
     </select>
 
-    <select id="cemail" parameterType="String" resultType="member">
-        select * from member_table where memberEmail=#{memberEmail}
-    </select>
 </mapper>
 
 

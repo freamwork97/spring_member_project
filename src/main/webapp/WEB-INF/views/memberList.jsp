@@ -5,55 +5,57 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-            crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <style>
+        table {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
 <%@include file="component/header.jsp" %>
 <%@include file="component/nav.jsp" %>
-<h2>학생목록</h2>
-<table class="table table-dark table-striped">
-    <tr>
-        <td>아이디</td>
-        <td>이메일</td>
-        <td>비밀번호</td>
-        <td>이름</td>
-        <td>생년월일</td>
-        <td>전화번호</td>
-        <td>조회</td>
-        <td>삭제</td>
-    </tr>
-    <c:forEach items="${memberList}" var="member">
-        <tr>
-            <td>${member.id}</td>
-            <td>${member.memberEmail}</td>
-            <td>${member.memberPassword}</td>
-            <td>${member.memberName}</td>
-            <td>${member.memberBirth}</td>
-            <td>${member.memberMobile}</td>
-            <td>
-                <button class="btn btn-primary" onclick="detail_fn('${member.id}')">조회</button>
-            </td>
-            <td>
-                <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
-            </td>
+<div class="container">
+    <div id="member-list">
+        <table class="table table-dark table-striped">
+            <tr>
+                <td>id</td>
+                <td>email</td>
+                <td>name</td>
+                <td>birth</td>
+                <td>mobile</td>
+                <td>조회</td>
+                <td>삭제</td>
+            </tr>
+            <c:forEach items="${memberList}" var="member">
+                <tr>
+                    <td>${member.id}</td>
+                    <td>${member.memberEmail}</td>
+                    <td>${member.memberName}</td>
+                    <td>${member.memberBirth}</td>
+                    <td>${member.memberMobile}</td>
+                    <td>
+                        <button class="btn btn-info" onclick="detail_fn('${member.id}')">조회</button>
+<%--                        <a href="/member?id=${member.id}">조회</a>--%>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
 
-        </tr>
-    </c:forEach>
-</table>
 <%@include file="component/footer.jsp" %>
-
 </body>
 <script>
     const detail_fn = (id) => {
-        location.href="/member?id="+id;
+        location.href = "/member?id=" + id;
     }
+
     const delete_fn = (id) => {
-        location.href="/delete?id="+id;
+        location.href = "/delete?id=" + id;
     }
 </script>
 </html>
